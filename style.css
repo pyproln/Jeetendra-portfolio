@@ -1,0 +1,65 @@
+/* General body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Hero section */
+  header {
+    background-color: #e9ecef;
+    padding: 60px 20px;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  /* Project cards */
+  .card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Footer (optional for later) */
+  footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  footer {
+    font-size: 0.9rem;
+    background-color: #212529;
+    color: rgb(0, 0, 0);
+  }
+  .dropdown-toggle::after {
+    display: none;
+  }
+  
+  #navbarDropdown {
+    font-size: 1.5rem;
+    border: none;
+  }
+  
