@@ -61,6 +61,20 @@ def upload_image():
 
     return render_template('index.html', message='Image uploaded successfully.', extracted_text=extracted_text, image_filename = filename)
 
+# route to Dashboard
+@app.route('/dashboard')
+def dashboard():
+    # Dummy stats for now
+    stats = {
+        'total_uploads': 12,
+        'ocr_count': 7,
+        'caption_count': 5,
+        'speech_triggered': 10
+    }
+    return render_template('dashboard.html', stats=stats)
+
+
+
 # New route to speak
 @app.route('/speak', methods=['POST'])
 def speak_text():

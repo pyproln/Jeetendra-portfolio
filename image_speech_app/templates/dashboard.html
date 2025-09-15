@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Image Speech App Dashboard</h1>
+    <ul>
+        <li>Total Uploads: {{ stats.total_uploads }}</li>
+        <li>OCR Mode Used: {{ stats.ocr_count }}</li>
+        <li>Captioning Mode Used: {{ stats.caption_count }}</li>
+        <li>Speech Playback Triggered: {{ stats.speech_triggered }}</li>
+    </ul>
+</body>
+</html>
