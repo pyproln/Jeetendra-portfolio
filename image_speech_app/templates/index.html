@@ -3,13 +3,62 @@
 <head>
     <!-- <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Image to speech</title>
 </head>
 <body>
-    <h2>Upload an Image</h2>
-    <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="image" required>
-        <button type="submit">Convert to speech</button>
-    </form>
+    <div class="container py-4">
+        <h2>Upload an Image</h2>
+        <form method="POST" action="/upload" enctype="multipart/form-data" class="mb-4">
+            <div class="mb-3">
+              <label for="image">Upload Image:</label><br>
+              <input type="file" name="image" id="image" class="form-control" required>
+            </div>
+          
+            <div class="mb-3">
+              <label>Select Mode:</label><br>
+              <input type="radio" id="ocr" name="mode" value="ocr" checked>
+              <label for="ocr">OCR (Text Extraction)</label><br>
+              <input type="radio" id="caption" name="mode" value="caption">
+              <label for="caption">Captioning (Visual Description)</label>
+            </div>
+          
+            <button type="submit" class="btn btn-primary">Upload Image</button>
+          </form>
+          
+
+        {% if message %}
+            <div class="alert alert-info mt-3" role="alert">
+                <p>{{ message }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Display uploaded image -->
+        {% if image_filename %}
+            <h3>Uploaded Image:</h3>
+            <img src="{{ url_for('static', filename='uploads/' ~ image_filename) }}" class="img-fluid mb-3" alt="Uploaded Image">
+        {% endif %}
+
+        <!-- Display Extracted Text -->
+        {% if extracted_text %}
+            <h3>Extracted Text:</h3>
+            <div class="border p-3 mb-3" style="white-space: pre-wrap;">{{ extracted_text }}</div>
+
+            <form method="POST" action="/speak">
+                <input type="hidden" name="text" value="{{ extracted_text }}">
+                <button type="submit" class="btn btn-success">Convert to Speech</button>
+            </form>
+        {% endif %}
+
+        {% if audio_file %}
+            <h3 class="mt-4">Speech Output:</h3>
+            <audio controls class="w-100">
+                <source src="{{ url_for('static', filename=audio_file) }}?v={{ extracted_text | urlencode }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <!-- ✅ Reset Button -->
+            <a href="/" class="btn btn-outline-secondary">Start Over</a>
+        {% endif %}
+    </div>    
 </body>
 </html>
