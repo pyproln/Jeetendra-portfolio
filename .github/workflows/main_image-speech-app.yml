@@ -67,5 +67,5 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'image-speech-app'
-          slot-name: 'Production'
+          # slot-name: 'Production'
           
