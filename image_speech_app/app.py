@@ -125,6 +125,5 @@ def extract_text(image_path):
     return ' '.join(result)
 
 # ✅ Run the Flask app
-if __name__ == '__main__':
-    app.run(debug=True)
-
+# if __name__ == '__main__':
+#     app.run(debug=True)
